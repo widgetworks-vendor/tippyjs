@@ -1,13 +1,13 @@
-@import './_vars.scss';
-@import './animations/fade.scss';
+@use './_vars.scss';
+@use './animations/fade.scss';
 
 $color: #333;
 
-[data-#{$namespace-prefix}-root] {
+[data-#{vars.$namespace-prefix}-root] {
   max-width: calc(100vw - 10px);
 }
 
-.#{$namespace-prefix}-box {
+.#{vars.$namespace-prefix}-box {
   position: relative;
   background-color: $color;
   color: white;
@@ -18,7 +18,7 @@ $color: #333;
   outline: 0;
   transition-property: transform, visibility, opacity;
 
-  &[data-placement^='top'] > .#{$namespace-prefix}-arrow {
+  &[data-placement^='top'] > .#{vars.$namespace-prefix}-arrow {
     bottom: 0;
 
     &::before {
@@ -30,7 +30,7 @@ $color: #333;
     }
   }
 
-  &[data-placement^='bottom'] > .#{$namespace-prefix}-arrow {
+  &[data-placement^='bottom'] > .#{vars.$namespace-prefix}-arrow {
     top: 0;
 
     &::before {
@@ -42,7 +42,7 @@ $color: #333;
     }
   }
 
-  &[data-placement^='left'] > .#{$namespace-prefix}-arrow {
+  &[data-placement^='left'] > .#{vars.$namespace-prefix}-arrow {
     right: 0;
 
     &::before {
@@ -53,7 +53,7 @@ $color: #333;
     }
   }
 
-  &[data-placement^='right'] > .#{$namespace-prefix}-arrow {
+  &[data-placement^='right'] > .#{vars.$namespace-prefix}-arrow {
     left: 0;
 
     &::before {
@@ -69,10 +69,10 @@ $color: #333;
   }
 }
 
-.#{$namespace-prefix}-arrow {
+.#{vars.$namespace-prefix}-arrow {
   & {
-    width: $arrow-size;
-    height: $arrow-size;
+    width: vars.$arrow-size;
+    height: vars.$arrow-size;
     color: $color;
   }
 
@@ -84,7 +84,7 @@ $color: #333;
   }
 }
 
-.#{$namespace-prefix}-content {
+.#{vars.$namespace-prefix}-content {
   position: relative;
   padding: 5px 9px;
   z-index: 1;

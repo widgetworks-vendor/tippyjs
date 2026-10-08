@@ -1,5 +1,5 @@
 import {State} from '@popperjs/core';
-import {Props} from './types';
+import {Props} from './types.js';
 
 export interface ListenerObject {
   node: Element;

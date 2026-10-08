@@ -4,11 +4,11 @@ import {
   BOX_CLASS,
   CONTENT_CLASS,
   SVG_ARROW_CLASS,
-} from './constants';
-import {div, isElement} from './dom-utils';
-import {Instance, PopperElement, Props} from './types';
-import {PopperChildren} from './types-internal';
-import {arrayFrom} from './utils';
+} from './constants.js';
+import {div, isElement} from './dom-utils.js';
+import {Instance, PopperElement, Props} from './types.js';
+import {PopperChildren} from './types-internal.js';
+import {arrayFrom} from './utils.js';
 
 // Firefox extensions don't allow .innerHTML = "..." property. This tricks it.
 const innerHTML = (): 'innerHTML' => 'innerHTML';

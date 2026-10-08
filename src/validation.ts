@@ -1,4 +1,4 @@
-import {Targets} from './types';
+import {Targets} from './types.js';
 
 export function createMemoryLeakWarning(method: string): string {
   const txt = method === 'destroy' ? 'n already-' : ' ';
@@ -43,7 +43,7 @@ export function getFormattedMessage(message: string): string[] {
 
 // Assume warnings and errors never have the same message
 let visitedMessages: Set<string>;
-if (__DEV__) {
+if (true /*__DEV__*/) {
   resetVisitedMessages();
 }
 

@@ -1,5 +1,5 @@
-@import '../_mixins.scss';
-@import '../_vars.scss';
+@use '../_mixins.scss';
+@use '../_vars.scss';
 
 @mixin hidden-transform($placement) {
   @if ($placement == 'top') {
@@ -13,12 +13,12 @@
   }
 }
 
-.#{$namespace-prefix}-box {
+.#{vars.$namespace-prefix}-box {
   &[data-animation='shift-away-subtle'] {
     &[data-state='hidden'] {
       opacity: 0;
 
-      @each $placement in $placements {
+      @each $placement in vars.$placements {
         &[data-placement^='#{$placement}'] {
           @include hidden-transform($placement);
         }

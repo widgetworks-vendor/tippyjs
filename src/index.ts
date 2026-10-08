@@ -1,11 +1,33 @@
+import {render} from './template.js';
+
+export {default as createSingleton} from './addons/createSingleton.js';
+export {default as delegate} from './addons/delegate.js';
+export {default as animateFill} from './plugins/animateFill.js';
+export {default as followCursor} from './plugins/followCursor.js';
+export {default as inlinePositioning} from './plugins/inlinePositioning.js';
+export {default as sticky} from './plugins/sticky.js';
+export {ROUND_ARROW as roundArrow} from './constants.js';
+export type {
+  Content,
+  CreateSingletonInstance,
+  Instance,
+  Props,
+  DefaultProps,
+  ReferenceElement,
+} from './types.js'
+export type {
+  State,
+} from '@popperjs/core';
+
 import bindGlobalEventListeners, {
   currentInput,
-} from './bindGlobalEventListeners';
-import createTippy, {mountedInstances} from './createTippy';
-import {getArrayOfElements, isElement, isReferenceElement} from './dom-utils';
-import {defaultProps, setDefaultProps, validateProps} from './props';
-import {HideAll, HideAllOptions, Instance, Props, Targets} from './types';
-import {validateTargets, warnWhen} from './validation';
+} from './bindGlobalEventListeners.js';
+import createTippy, {mountedInstances} from './createTippy.js';
+import {getArrayOfElements, isElement, isReferenceElement} from './dom-utils.js';
+import {defaultProps, setDefaultProps, validateProps} from './props.js';
+import {HideAll, HideAllOptions, Instance, Props, Targets} from './types.js';
+import {validateTargets, warnWhen} from './validation.js';
+export {createTippy};
 
 function tippy(
   targets: Targets,
@@ -14,7 +36,7 @@ function tippy(
   const plugins = defaultProps.plugins.concat(optionalProps.plugins || []);
 
   /* istanbul ignore else */
-  if (__DEV__) {
+  if (true /*__DEV__*/) {
     validateTargets(targets);
     validateProps(optionalProps, plugins);
   }
@@ -26,7 +48,7 @@ function tippy(
   const elements = getArrayOfElements(targets);
 
   /* istanbul ignore else */
-  if (__DEV__) {
+  if (true /*__DEV__*/) {
     const isSingleContentElement = isElement(passedProps.content);
     const isMoreThanOneReferenceElement = elements.length > 1;
     warnWhen(
@@ -45,26 +67,27 @@ function tippy(
     );
   }
 
-  const instances = elements.reduce<Instance[]>(
-    (acc, reference): Instance[] => {
-      const instance = reference && createTippy(reference, passedProps);
+  const instances: Instance[] = [];
+  elements.forEach((reference) => {
+    if (reference) {
+      const instance = createTippy(reference, passedProps);
+      instances.push(instance);
+    }
+  });
 
-      if (instance) {
-        acc.push(instance);
-      }
-
-      return acc;
-    },
-    []
-  );
-
-  return isElement(targets) ? instances[0] : instances;
+  const result = isElement(targets) ? instances[0] : instances;
+  return result;
 }
 
 tippy.defaultProps = defaultProps;
 tippy.setDefaultProps = setDefaultProps;
 tippy.currentInput = currentInput;
 
+tippy.setDefaultProps({render});
+
+export {
+  tippy,
+};
 export default tippy;
 
 export const hideAll: HideAll = ({

@@ -1,11 +1,11 @@
-import {DefaultProps, Plugin, Props, ReferenceElement, Tippy} from './types';
+import {DefaultProps, Plugin, Props, ReferenceElement, Tippy} from './types.js';
 import {
   hasOwnProperty,
   removeProperties,
   invokeWithArgsOrReturn,
-} from './utils';
-import {warnWhen} from './validation';
-import {TIPPY_DEFAULT_APPEND_TO} from './constants';
+} from './utils.js';
+import {warnWhen} from './validation.js';
+import {TIPPY_DEFAULT_APPEND_TO} from './constants.js';
 
 const pluginProps = {
   animateFill: false,
@@ -70,7 +70,7 @@ const defaultKeys = Object.keys(defaultProps);
 
 export const setDefaultProps: Tippy['setDefaultProps'] = (partialProps) => {
   /* istanbul ignore else */
-  if (__DEV__) {
+  if (true /*__DEV__*/) {
     const plugins = defaultProps.plugins.concat(partialProps.plugins || []);
     validateProps(partialProps, plugins);
   }

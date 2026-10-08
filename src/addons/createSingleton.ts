@@ -1,5 +1,5 @@
-import tippy from '..';
-import {div} from '../dom-utils';
+import tippy from '../index.js';
+import {div} from '../dom-utils.js';
 import {
   CreateSingleton,
   Plugin,
@@ -8,9 +8,9 @@ import {
   CreateSingletonInstance,
   Instance,
   Props,
-} from '../types';
-import {normalizeToArray, removeProperties} from '../utils';
-import {errorWhen} from '../validation';
+} from '../types.js';
+import {normalizeToArray, removeProperties} from '../utils.js';
+import {errorWhen} from '../validation.js';
 import {applyStyles, Modifier} from '@popperjs/core';
 
 // The default `applyStyles` modifier has a cleanup function that gets called
@@ -50,7 +50,7 @@ const createSingleton: CreateSingleton = (
   optionalProps = {}
 ) => {
   /* istanbul ignore else */
-  if (__DEV__) {
+  if (true /*__DEV__*/) {
     errorWhen(
       !Array.isArray(tippyInstances),
       [

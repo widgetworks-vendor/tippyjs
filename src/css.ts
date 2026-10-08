@@ -1,7 +1,9 @@
+import { prefix } from './prefix.js';
+
 export function injectCSS(css: string): void {
   const style = document.createElement('style');
   style.textContent = css;
-  style.setAttribute('data-__NAMESPACE_PREFIX__-stylesheet', '');
+  style.setAttribute(`data-${prefix}-stylesheet`, '');
   const head = document.head;
   const firstStyleOrLinkTag = document.querySelector('head>style,head>link');
 

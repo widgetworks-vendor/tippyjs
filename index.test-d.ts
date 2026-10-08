@@ -15,7 +15,7 @@ import tippy, {
   hideAll,
   roundArrow,
   CreateSingletonInstance,
-} from './src/types';
+} from './src/types.js';
 
 interface CustomProps {
   custom: number;

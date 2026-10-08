@@ -62,6 +62,13 @@ export interface GetReferenceClientRect {
   contextElement?: Element;
 }
 
+/**
+ * The events that can be used to trigger the tooltip.
+ * 
+ * Defaults to "mouseenter" if not provided.
+ */
+export type TriggerEvent = 'click' | 'focusin' | 'mouseenter';
+
 export interface Props extends LifecycleHooks, RenderProps {
   animateFill: boolean;
   appendTo: 'parent' | Element | ((ref: Element) => Element);
@@ -105,7 +112,7 @@ export interface Props extends LifecycleHooks, RenderProps {
   showOnCreate: boolean;
   sticky: boolean | 'reference' | 'popper';
   touch: boolean | 'hold' | ['hold', number];
-  trigger: string;
+  trigger: `${TriggerEvent} ${TriggerEvent}` | string;
   triggerTarget: Element | Element[] | null;
 }
 

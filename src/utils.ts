@@ -1,4 +1,4 @@
-import {BasePlacement, Placement} from './types';
+import {BasePlacement, Placement} from './types.js';
 
 export function hasOwnProperty(
   obj: Record<string, unknown>,

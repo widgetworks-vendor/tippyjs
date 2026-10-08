@@ -1,7 +1,7 @@
 import {Modifier, Placement} from '@popperjs/core';
-import {isMouseEvent} from '../dom-utils';
-import {BasePlacement, InlinePositioning, Props} from '../types';
-import {arrayFrom, getBasePlacement} from '../utils';
+import {isMouseEvent} from '../dom-utils.js';
+import {BasePlacement, InlinePositioning, Props} from '../types.js';
+import {arrayFrom, getBasePlacement} from '../utils.js';
 
 function getProps(props: Props, modifier: Modifier<any, any>): Partial<Props> {
   return {

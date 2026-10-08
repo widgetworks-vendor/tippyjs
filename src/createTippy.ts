@@ -1,7 +1,7 @@
 import {createPopper, StrictModifiers, Modifier} from '@popperjs/core';
-import {currentInput} from './bindGlobalEventListeners';
-import {isIE11} from './browser';
-import {TIPPY_DEFAULT_APPEND_TO, TOUCH_OPTIONS} from './constants';
+import {currentInput} from './bindGlobalEventListeners.js';
+import {isIE11} from './browser.js';
+import {TIPPY_DEFAULT_APPEND_TO, TOUCH_OPTIONS} from './constants.js';
 import {
   actualContains,
   div,
@@ -11,9 +11,9 @@ import {
   setTransitionDuration,
   setVisibilityState,
   updateTransitionEndListener,
-} from './dom-utils';
-import {defaultProps, evaluateProps, getExtendedPassedProps} from './props';
-import {getChildren} from './template';
+} from './dom-utils.js';
+import {defaultProps, evaluateProps, getExtendedPassedProps} from './props.js';
+import {getChildren} from './template.js';
 import {
   Content,
   Instance,
@@ -21,8 +21,8 @@ import {
   PopperElement,
   Props,
   ReferenceElement,
-} from './types';
-import {ListenerObject, PopperTreeData, PopperChildren} from './types-internal';
+} from './types.js';
+import {ListenerObject, PopperTreeData, PopperChildren} from './types-internal.js';
 import {
   arrayFrom,
   debounce,
@@ -33,8 +33,9 @@ import {
   splitBySpaces,
   unique,
   removeUndefinedProps,
-} from './utils';
-import {createMemoryLeakWarning, errorWhen, warnWhen} from './validation';
+} from './utils.js';
+import {createMemoryLeakWarning, errorWhen, warnWhen} from './validation.js';
+import { prefix } from './prefix.js';
 
 let idCounter = 1;
 let mouseMoveListeners: ((event: MouseEvent) => void)[] = [];
@@ -114,7 +115,7 @@ export default function createTippy(
   // it doesn't seem to happen in the browser
   /* istanbul ignore if */
   if (!props.render) {
-    if (__DEV__) {
+    if (true /*__DEV__*/) {
       errorWhen(true, 'render() function has not been supplied.');
     }
 
@@ -126,8 +127,8 @@ export default function createTippy(
   // ===========================================================================
   const {popper, onUpdate} = props.render(instance);
 
-  popper.setAttribute('data-__NAMESPACE_PREFIX__-root', '');
-  popper.id = `__NAMESPACE_PREFIX__-${instance.id}`;
+  popper.setAttribute(`data-${prefix}-root`, '');
+  popper.id = `${prefix}-${instance.id}`;
 
   instance.popper = popper;
   reference._tippy = instance;
@@ -730,7 +731,7 @@ export default function createTippy(
     createPopperInstance();
 
     /* istanbul ignore else */
-    if (__DEV__) {
+    if (true /*__DEV__*/) {
       // Accessibility check
       warnWhen(
         instance.props.interactive &&
@@ -756,7 +757,7 @@ export default function createTippy(
 
   function getNestedPopperTree(): PopperElement[] {
     return arrayFrom(
-      popper.querySelectorAll('[data-__NAMESPACE_PREFIX__-root]')
+      popper.querySelectorAll(`[data-${prefix}-root]`)
     );
   }
 
@@ -848,7 +849,7 @@ export default function createTippy(
 
   function setProps(partialProps: Partial<Props>): void {
     /* istanbul ignore else */
-    if (__DEV__) {
+    if (true /*__DEV__*/) {
       warnWhen(instance.state.isDestroyed, createMemoryLeakWarning('setProps'));
     }
 
@@ -918,7 +919,7 @@ export default function createTippy(
 
   function show(): void {
     /* istanbul ignore else */
-    if (__DEV__) {
+    if (true /*__DEV__*/) {
       warnWhen(instance.state.isDestroyed, createMemoryLeakWarning('show'));
     }
 
@@ -1017,7 +1018,7 @@ export default function createTippy(
 
   function hide(): void {
     /* istanbul ignore else */
-    if (__DEV__) {
+    if (true /*__DEV__*/) {
       warnWhen(instance.state.isDestroyed, createMemoryLeakWarning('hide'));
     }
 
@@ -1076,7 +1077,7 @@ export default function createTippy(
 
   function hideWithInteractivity(event: MouseEvent): void {
     /* istanbul ignore else */
-    if (__DEV__) {
+    if (true /*__DEV__*/) {
       warnWhen(
         instance.state.isDestroyed,
         createMemoryLeakWarning('hideWithInteractivity')
@@ -1090,7 +1091,7 @@ export default function createTippy(
 
   function unmount(): void {
     /* istanbul ignore else */
-    if (__DEV__) {
+    if (true /*__DEV__*/) {
       warnWhen(instance.state.isDestroyed, createMemoryLeakWarning('unmount'));
     }
 
@@ -1123,7 +1124,7 @@ export default function createTippy(
 
   function destroy(): void {
     /* istanbul ignore else */
-    if (__DEV__) {
+    if (true /*__DEV__*/) {
       warnWhen(instance.state.isDestroyed, createMemoryLeakWarning('destroy'));
     }
 

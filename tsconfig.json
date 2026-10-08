@@ -1,13 +1,17 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "es2015"],
-    "moduleResolution": "node",
-    "noEmit": true,
+    "target": "esnext",
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
     "resolveJsonModule": true,
     "strict": true,
     "noUnusedLocals": true,
-    "types": ["node"],
-    "allowJs": true
+    "allowJs": true,
+    "declaration": true,
+    "outDir": "./dist",
+    "rootDir": "./src"
   },
-  "include": ["src/**/*", "index.d.ts", "index.test-d.ts"]
+  "include": [
+    "src/**/*"
+  ]
 }

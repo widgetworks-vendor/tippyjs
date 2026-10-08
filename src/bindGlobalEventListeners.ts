@@ -1,5 +1,5 @@
-import {TOUCH_OPTIONS} from './constants';
-import {isReferenceElement} from './dom-utils';
+import {TOUCH_OPTIONS} from './constants.js';
+import {isReferenceElement} from './dom-utils.js';
 
 export const currentInput = {isTouch: false};
 let lastMouseMoveTime = 0;

@@ -1,8 +1,8 @@
-import {BACKDROP_CLASS} from '../constants';
-import {div, setVisibilityState} from '../dom-utils';
-import {getChildren} from '../template';
-import {AnimateFill} from '../types';
-import {errorWhen} from '../validation';
+import {BACKDROP_CLASS} from '../constants.js';
+import {div, setVisibilityState} from '../dom-utils.js';
+import {getChildren} from '../template.js';
+import {AnimateFill} from '../types.js';
+import {errorWhen} from '../validation.js';
 
 const animateFill: AnimateFill = {
   name: 'animateFill',
@@ -10,7 +10,7 @@ const animateFill: AnimateFill = {
   fn(instance) {
     // @ts-ignore
     if (!instance.props.render?.$$tippy) {
-      if (__DEV__) {
+      if (true /*__DEV__*/) {
         errorWhen(
           instance.props.animateFill,
           'The `animateFill` plugin requires the default render function.'

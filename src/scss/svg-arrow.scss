@@ -1,7 +1,7 @@
-@import './_vars.scss';
+@use './_vars.scss';
 
-.#{$namespace-prefix}-box {
-  &[data-placement^='top'] > .#{$namespace-prefix}-svg-arrow {
+.#{vars.$namespace-prefix}-box {
+  &[data-placement^='top'] > .#{vars.$namespace-prefix}-svg-arrow {
     bottom: 0;
 
     &::after,
@@ -11,7 +11,7 @@
     }
   }
 
-  &[data-placement^='bottom'] > .#{$namespace-prefix}-svg-arrow {
+  &[data-placement^='bottom'] > .#{vars.$namespace-prefix}-svg-arrow {
     top: 0;
 
     > svg {
@@ -19,7 +19,7 @@
     }
   }
 
-  &[data-placement^='left'] > .#{$namespace-prefix}-svg-arrow {
+  &[data-placement^='left'] > .#{vars.$namespace-prefix}-svg-arrow {
     right: 0;
 
     &::after,
@@ -30,7 +30,7 @@
     }
   }
 
-  &[data-placement^='right'] > .#{$namespace-prefix}-svg-arrow {
+  &[data-placement^='right'] > .#{vars.$namespace-prefix}-svg-arrow {
     left: 0;
 
     &::after,
@@ -42,10 +42,10 @@
   }
 }
 
-.#{$namespace-prefix}-svg-arrow {
+.#{vars.$namespace-prefix}-svg-arrow {
   position: absolute;
-  width: $arrow-size;
-  height: $arrow-size;
+  width: vars.$arrow-size;
+  height: vars.$arrow-size;
   fill: #333;
   text-align: initial;
 

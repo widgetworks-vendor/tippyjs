@@ -1,5 +1,5 @@
-import {getOwnerDocument, isMouseEvent} from '../dom-utils';
-import {FollowCursor, Instance} from '../types';
+import {getOwnerDocument, isMouseEvent} from '../dom-utils.js';
+import {FollowCursor, Instance} from '../types.js';
 
 let mouseCoords = {clientX: 0, clientY: 0};
 let activeInstances: Array<{instance: Instance; doc: Document}> = [];

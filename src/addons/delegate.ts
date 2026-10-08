@@ -1,10 +1,10 @@
-import tippy from '..';
-import {TOUCH_OPTIONS} from '../constants';
-import {defaultProps} from '../props';
-import {Instance, Props, Targets} from '../types';
-import {ListenerObject} from '../types-internal';
-import {normalizeToArray, removeProperties} from '../utils';
-import {errorWhen} from '../validation';
+import tippy from '../index.js';
+import {TOUCH_OPTIONS} from '../constants.js';
+import {defaultProps} from '../props.js';
+import {Instance, Props, Targets} from '../types.js';
+import {ListenerObject} from '../types-internal.js';
+import {normalizeToArray, removeProperties} from '../utils.js';
+import {errorWhen} from '../validation.js';
 
 const BUBBLING_EVENTS_MAP = {
   mouseover: 'mouseenter',
@@ -21,7 +21,7 @@ function delegate(
   props: Partial<Props> & {target: string}
 ): Instance | Instance[] {
   /* istanbul ignore else */
-  if (__DEV__) {
+  if (true /*__DEV__*/) {
     errorWhen(
       !(props && props.target),
       [
